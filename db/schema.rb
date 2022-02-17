@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_17_130905) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_17_204314) do
   create_table "computers", force: :cascade do |t|
     t.string "name"
     t.string "cpu"
@@ -19,11 +19,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_17_130905) do
     t.string "screen"
     t.string "integrated_gpu"
     t.string "discrete_gpu"
-    t.string "price"
     t.string "details_url"
     t.integer "apps_score"
     t.integer "gaming_score"
-    t.integer "mobility_score"
+    t.integer "movility_score"
+    t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

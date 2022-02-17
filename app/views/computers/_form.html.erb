@@ -1,0 +1,77 @@
+<%= form_with(model: computer) do |form| %>
+  <% if computer.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(computer.errors.count, "error") %> prohibited this computer from being saved:</h2>
+
+      <ul>
+        <% computer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :cpu, style: "display: block" %>
+    <%= form.text_field :cpu %>
+  </div>
+
+  <div>
+    <%= form.label :ram, style: "display: block" %>
+    <%= form.text_field :ram %>
+  </div>
+
+  <div>
+    <%= form.label :storage, style: "display: block" %>
+    <%= form.text_field :storage %>
+  </div>
+
+  <div>
+    <%= form.label :screen, style: "display: block" %>
+    <%= form.text_field :screen %>
+  </div>
+
+  <div>
+    <%= form.label :integrated_gpu, style: "display: block" %>
+    <%= form.text_field :integrated_gpu %>
+  </div>
+
+  <div>
+    <%= form.label :discrete_gpu, style: "display: block" %>
+    <%= form.text_field :discrete_gpu %>
+  </div>
+
+  <div>
+    <%= form.label :details_url, style: "display: block" %>
+    <%= form.text_field :details_url %>
+  </div>
+
+  <div>
+    <%= form.label :apps_score, style: "display: block" %>
+    <%= form.number_field :apps_score %>
+  </div>
+
+  <div>
+    <%= form.label :gaming_score, style: "display: block" %>
+    <%= form.number_field :gaming_score %>
+  </div>
+
+  <div>
+    <%= form.label :movility_score, style: "display: block" %>
+    <%= form.number_field :movility_score %>
+  </div>
+
+  <div>
+    <%= form.label :price, style: "display: block" %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
