@@ -60,6 +60,7 @@ def scrape_computers_by_page(page_number, computers_arr)
     storage = storage.text.to_s.strip unless storage.nil?
     integrated_gpu = integrated_gpu.text.to_s.strip unless integrated_gpu.nil?
     price = price.to_s.strip unless price.nil?
+    price = price.tr('$', '').tr('.', '').to_i
 
     apps_score = 0
 
@@ -124,7 +125,7 @@ computers.each do |computer|
     details_url: computer.details_url,
     apps_score: computer.score['apps'],
     gaming_score: computer.score['gaming'],
-    mobility_score: computer.score['mobility']
+    movility_score: computer.score['mobility']
   )
 
 end

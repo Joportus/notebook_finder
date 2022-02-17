@@ -8,11 +8,11 @@ class CreateComputers < ActiveRecord::Migration[7.0]
       t.string :screen
       t.string :integrated_gpu
       t.string :discrete_gpu
-      t.string :price
       t.string :details_url
       t.integer :apps_score
       t.integer :gaming_score
-      t.integer :mobility_score
+      t.integer :movility_score
+      t.integer :price
 
       t.timestamps
     end
