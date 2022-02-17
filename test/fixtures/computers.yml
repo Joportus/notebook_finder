@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  cpu: MyString
+  ram: MyString
+  storage: MyString
+  screen: MyString
+  integrated_gpu: MyString
+  discrete_gpu: MyString
+  price: MyString
+  details_url: MyString
+  apps_score: 1
+  gaming_score: 1
+  mobility_score: 1
+
+two:
+  name: MyString
+  cpu: MyString
+  ram: MyString
+  storage: MyString
+  screen: MyString
+  integrated_gpu: MyString
+  discrete_gpu: MyString
+  price: MyString
+  details_url: MyString
+  apps_score: 1
+  gaming_score: 1
+  mobility_score: 1
