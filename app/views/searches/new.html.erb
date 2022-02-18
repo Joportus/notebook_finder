@@ -1,0 +1,20 @@
+<br>
+<h2>Encuentra el computador perfecto para ti!</h2>
+<br>
+
+<%= form_for @search, html: {class: "pure-form"} do |s| %>
+  <div class="field">
+    <%= s.label :"uso del computador" %><br/>
+    <%= s.select :use_case, options_for_select([["Uso general", "apps_score"],["Gaming", "gaming_score"],["Trabajo", "apps_score"]]), :include_blank => true%>
+  </div>
+
+  <div class="field">
+    <%= s.label "presupuesto" %><br>
+    <%= s.number_field :budget %>
+  </div>
+
+  <div class="actions"><%= s.submit "Search", class: "pure-button pure-button-primary" %></div>
+<% end %>
+<br>
+<br>
+<p><%= link_to 'Volver', computers_path %></p>

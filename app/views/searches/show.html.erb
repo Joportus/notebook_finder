@@ -1,0 +1,34 @@
+<br>
+<h1>Resultados</h1>
+
+<p><%= link_to 'Volver', new_search_path %></p>
+
+<% if @search.search_computers.empty? %>
+  <p>No se encontraron computadores</p>
+<% else %>
+  <% @search.search_computers.each do |c| %>
+    <br>
+    <div class="div">
+      <h1><%= c.name %></h1>
+      <br>
+      <p>Precio: $<%= c.price %></p>
+      <p>Puntaje Uso General: <%= c.apps_score %></p>
+      <p>Puntaje Gaming: <%= c.gaming_score %></p>
+      <p>Puntaje mobilidad: <%= c.movility_score %></p>
+    </div>
+    <div class="div">
+      <h2>Especificaciones:</h2>
+      <p>Procesador: <%= c.cpu %></p>
+      <p>Memoria ram: <%= c.ram %></p>
+      <p>Almacenamiento: <%= c.storage %></p>
+      <p>Tarjeta gráfica integrada: <%= c.integrated_gpu %></p>
+      <p>Tarjeta gráfica dedicada: <%= c.discrete_gpu %></p>
+
+    </div>
+    <div class="div">
+      <h1><%= link_to "Comprar!", c.details_url %></h1>
+    </div>
+
+
+  <% end %>
+<% end %>
