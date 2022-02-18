@@ -66,6 +66,8 @@ def scrape_computers_by_page(page_number, computers_arr)
 
     details_url = 'no_url'
 
+    image_url = 'no_url'
+
     unless details.nil?
       begin
         details = details.to_s.strip
@@ -80,6 +82,11 @@ div.benchmark-container p.benchmark-score')[1].text.to_s.delete(' ').split('/')[
 
         mobility_score = details_doc.css('//body
 div.benchmark-container p.benchmark-score')[2].text.to_s.delete(' ').split('/')[0].to_s.to_i
+
+        image_url = details_doc.css('//body
+div.image-gallery-image
+img/@src').to_s
+
       rescue OpenURI::HTTPError => ex
         puts "Detalle no encontrado"
       end
@@ -88,7 +95,7 @@ div.benchmark-container p.benchmark-score')[2].text.to_s.delete(' ').split('/')[
 
     score = { "apps" => apps_score, "gaming" => gaming_score, "mobility" => mobility_score }
 
-    computer_i = Notebook.new(name, cpu, ram, storage, screen, integrated_gpu, discrete_gpu, price, details_url, score)
+    computer_i = Notebook.new(name, cpu, ram, storage, screen, integrated_gpu, discrete_gpu, price, details_url, score, image_url)
     computers_arr << computer_i
 
   end
@@ -103,7 +110,7 @@ def scrape_computer_pages(num_of_pages)
   return computers
 end
 
-computers = scrape_computer_pages(1)
+computers = scrape_computer_pages(number_of_pages)
 Computer.find_each(&:destroy)
 computers.each do |computer|
   Computer.create(
@@ -118,7 +125,8 @@ computers.each do |computer|
     details_url: computer.details_url,
     apps_score: computer.score['apps'],
     gaming_score: computer.score['gaming'],
-    movility_score: computer.score['mobility']
+    movility_score: computer.score['mobility'],
+    image_url: computer.image_url
   )
 
 end

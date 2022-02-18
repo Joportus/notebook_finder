@@ -1,5 +1,5 @@
 class Notebook
-  def initialize(name, cpu, ram, storage, screen, integrated_gpu, discrete_gpu, price, details_url, score)
+  def initialize(name, cpu, ram, storage, screen, integrated_gpu, discrete_gpu, price, details_url, score, image_url)
     @name = name
     @cpu = cpu
     @ram = ram
@@ -10,6 +10,7 @@ class Notebook
     @price = price
     @details_url = details_url
     @score = score
+    @image_url = image_url
   end
 
   #defining getters
@@ -51,6 +52,10 @@ class Notebook
 
   def score
     @score
+  end
+
+  def image_url
+    @image_url
   end
 
 
