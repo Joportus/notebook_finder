@@ -1,14 +1,10 @@
 <p style="color: green"><%= notice %></p>
+<br>
+<br>
+<h1>Notebook Finder</h1>
+<br>
+<h2>
+  <%= link_to "Buscador de laptops personalizado", new_search_path %>
+</h2>
 
-<h1>Computers</h1>
 
-<div id="computers">
-  <% @computers.each do |computer| %>
-    <%= render computer %>
-    <p>
-      <%= link_to "Show this computer", computer %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New computer", new_computer_path %>

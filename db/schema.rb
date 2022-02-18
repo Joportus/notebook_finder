@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_17_204314) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_18_122639) do
   create_table "computers", force: :cascade do |t|
     t.string "name"
     t.string "cpu"
@@ -24,6 +24,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_17_204314) do
     t.integer "gaming_score"
     t.integer "movility_score"
     t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.integer "budget"
+    t.string "use_case"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

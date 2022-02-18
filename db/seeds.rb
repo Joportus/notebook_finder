@@ -17,12 +17,13 @@ end
 
 
 def scrape_computers_by_page(page_number, computers_arr)
-  url_home = 'https://www.solotodo.cl'
-  url_base = 'https://www.solotodo.cl/notebooks?ordering=offer_price_usd&page='
-  url = url_base + page_number.to_s + '&'
-  doc = Nokogiri::HTML(URI.open(url))
-  doc = doc.xpath('//body')
-  computers = doc.css('div.container-fluid
+  begin
+    url_home = 'https://www.solotodo.cl'
+    url_base = 'https://www.solotodo.cl/notebooks?ordering=offer_price_usd&page='
+    url = url_base + page_number.to_s + '&'
+    doc = Nokogiri::HTML(URI.open(url))
+    doc = doc.xpath('//body')
+    computers = doc.css('div.container-fluid
     div.row
     div.col-12
     div.row
@@ -32,6 +33,11 @@ def scrape_computers_by_page(page_number, computers_arr)
     div.card
     div.card-block
     div.category-browse-result')
+  rescue OpenURI::HTTPError => ex
+    puts "Problema encontrando la página"
+
+  end
+
 
   computers.each do |computer|
 
@@ -71,12 +77,13 @@ def scrape_computers_by_page(page_number, computers_arr)
     details_url = 'no_url'
 
     unless details.nil?
-      details = details.to_s.strip
-      details_url = url_home + details
-      ## getting computer details
-      details_doc = Nokogiri::HTML(URI.open(details_url))
-      details_doc = details_doc.xpath('//body')
-      score = details_doc.css('div.container-fluid
+      begin
+        details = details.to_s.strip
+        details_url = url_home + details
+        ## getting computer details
+        details_doc = Nokogiri::HTML(URI.open(details_url))
+        details_doc = details_doc.xpath('//body')
+        score = details_doc.css('div.container-fluid
       div.row
       div.col-12
       div#product-detail-grid
@@ -86,11 +93,15 @@ def scrape_computers_by_page(page_number, computers_arr)
       div#benchmarks-container
       div.benchmark-container')
 
-      apps_score = score.css('p.benchmark-score')[0].text.to_s.delete(' ').split('/')[0].to_s.to_i
+        apps_score = score.css('p.benchmark-score')[0].text.to_s.delete(' ').split('/')[0].to_s.to_i
 
-      gaming_score = score.css('p.benchmark-score')[1].text.to_s.delete(' ').split('/')[0].to_s.to_i
+        gaming_score = score.css('p.benchmark-score')[1].text.to_s.delete(' ').split('/')[0].to_s.to_i
 
-      mobility_score = score.css('p.benchmark-score')[2].text.to_s.delete(' ').split('/')[0].to_s.to_i
+        mobility_score = score.css('p.benchmark-score')[2].text.to_s.delete(' ').split('/')[0].to_s.to_i
+      rescue OpenURI::HTTPError => ex
+        puts "Detalle no encontrado"
+      end
+
     end
 
     score = { "apps" => apps_score, "gaming" => gaming_score, "mobility" => mobility_score }
@@ -110,8 +121,8 @@ def scrape_computer_pages(num_of_pages)
   return computers
 end
 
-Computer.find_each(&:destroy)
 computers = scrape_computer_pages(number_of_pages)
+Computer.find_each(&:destroy)
 computers.each do |computer|
   Computer.create(
     name: computer.name,
