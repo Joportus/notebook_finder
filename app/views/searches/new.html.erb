@@ -2,7 +2,10 @@
 <br>
 <h2>Encuentra el computador perfecto para ti!</h2>
 <br>
-
+<a href=<%= computers_path %>>
+  <button type="button" class="btn btn-primary">Volver</button>
+</a>
+<br/><br/><br/>
 <%= form_for @search, html: {class: "pure-form"} do |s| %>
 <div class="field">
   <%= s.label :"uso del computador" %><br/>
@@ -18,8 +21,6 @@
 <% end %>
 <br>
 <br>
-<a href=<%= computers_path %>>
-  <button type="button" class="btn btn-primary">Volver</button>
-</a>
+
 
 
