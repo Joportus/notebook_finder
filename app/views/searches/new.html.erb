@@ -1,12 +1,16 @@
 
 <br>
-<h2>Encuentra el computador perfecto para ti!</h2>
+<h2 class="display-5">Encuentra el computador perfecto para ti!</h2>
 <br>
 <a href=<%= computers_path %>>
   <button type="button" class="btn btn-primary">Volver</button>
 </a>
 <br/><br/><br/>
 <%= form_for @search, html: {class: "pure-form"} do |s| %>
+  <h4 class="display-6">
+    Necesitamos saber tu presupuesto y el uso que le darás a tu computador:
+  </h4>
+  <br/>
 <div class="field">
   <%= s.label :"uso del computador" %><br/>
   <%= s.select :use_case, options_for_select([["Uso general", "apps_score"],["Gaming", "gaming_score"],["Trabajo", "apps_score"]]), :include_blank => true%>
