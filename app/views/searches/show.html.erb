@@ -12,34 +12,31 @@
   <p>No se encontraron computadores</p>
 <% else %>
   <% @search.search_computers.each do |c| %>
-    <br>
-    <div class="div">
-      <h1><%= c.name %></h1>
-      <br>
-      <img src=<%= c.image_url %> >
-      <br>
-      <br>
-      <h1><%= link_to "Comprar!", c.details_url %></h1>
-      <br>
-      <p>Precio: $<%= c.price %></p>
-      <p>Puntaje Uso General: <%= c.apps_score %></p>
-      <p>Puntaje Gaming: <%= c.gaming_score %></p>
-      <p>Puntaje mobilidad: <%= c.movility_score %></p>
-    </div>
-    <div class="div" >
-      <h2>Especificaciones:</h2>
-      <p>Procesador: <%= c.cpu %></p>
-      <p>Memoria ram: <%= c.ram %></p>
-      <p>Almacenamiento: <%= c.storage %></p>
-      <p>Tarjeta gráfica integrada: <%= c.integrated_gpu %></p>
-      <p>Tarjeta gráfica dedicada: <%= c.discrete_gpu %></p>
-      <p>Pantalla: <%= c.screen %></p>
 
+    <div class="card" style="width: 72rem;">
+      <img src=<%= c.image_url %> class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%= c.name %></h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Precio: $<%= c.price %></li>
+        <li class="list-group-item">Procesador: <%= c.cpu %></li>
+        <% if c.discrete_gpu != "None" %>
+          <li class="list-group-item">Tarjeta gráfica: <%= c.discrete_gpu %></li>
+        <% else %>
+          <li class="list-group-item">Tarjeta gráfica: <%= c.integrated_gpu %></li>
+        <% end %>
+        <li class="list-group-item">Almacenamiento: <%= c.storage %></li>
+        <li class="list-group-item">Pantalla: <%= c.screen %></li>
+      </ul>
+      <div class="card-body">
+        <a href=<%= c.details_url %> class="card-link">Ver donde comprar</a>
+      </div>
     </div>
-    <div class="div">
-      <br>
-    </div>
+    <br/><br/>
 
 
   <% end %>
 <% end %>
+
+
