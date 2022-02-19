@@ -1,4 +1,4 @@
-
+git
 <br>
 <h2>Encuentra el computador perfecto para ti!</h2>
 <br>
@@ -14,9 +14,12 @@
   <%= s.number_field :budget %>
 </div>
 
-<div class="actions"><%= s.submit "Search", class: "pure-button pure-button-primary" %></div>
+<div class="actions"><%= s.submit "Buscar", class: "pure-button pure-button-primary" %></div>
 <% end %>
 <br>
 <br>
-<p><%= link_to 'Volver', computers_path %></p>
+<a href=<%= computers_path %>>
+  <button type="button" class="btn btn-primary">Volver</button>
+</a>
+
 

@@ -1,8 +1,12 @@
 <br>
 
 <h1>Resultados</h1>
-
-<h2><%= link_to 'Volver', new_search_path %></h2>
+<br/>
+<h2>
+  <a href=<%= new_search_path %>>
+    <button type="button" class="btn btn-primary">Volver</button>
+  </a>
+</h2>
 
 
 <br>
@@ -26,11 +30,16 @@
         <% else %>
           <li class="list-group-item">Tarjeta gráfica: <%= c.integrated_gpu %></li>
         <% end %>
+        <li class="list-group-item">Memoria RAM: <%= c.ram %></li>
         <li class="list-group-item">Almacenamiento: <%= c.storage %></li>
         <li class="list-group-item">Pantalla: <%= c.screen %></li>
       </ul>
       <div class="card-body">
-        <a href=<%= c.details_url %> class="card-link">Ver donde comprar</a>
+        <a href=<%= c.details_url %>>
+          <button type="button" class="btn btn-success">Ver donde comprar</button>
+        </a>
+
+
       </div>
     </div>
     <br/><br/>
