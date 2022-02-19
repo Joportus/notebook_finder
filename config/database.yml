@@ -20,6 +20,8 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: joportus
+  password: Juanquin1512
 
 development:
   <<: *default
@@ -41,7 +43,7 @@ development:
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
-  #port: 5432
+  port: 5433
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -82,5 +84,5 @@ test:
 production:
   <<: *default
   database: notebook_finder_production
-  username: notebook_finder
-  password: <%= ENV["NOTEBOOK_FINDER_DATABASE_PASSWORD"] %>
+  username: joportus
+  password: Juanquin1512
