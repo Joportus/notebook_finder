@@ -87,6 +87,11 @@ div.benchmark-container p.benchmark-score')[2].text.to_s.delete(' ').split('/')[
 div.image-gallery-image
 img/@src').to_s
 
+        weight = details_doc.css('//body
+  div#technical-specifications-container
+  div.col-md-6')[0].css('dl
+    dd')[0].text.tr('.', '')
+
       rescue OpenURI::HTTPError => ex
         puts "Detalle no encontrado"
       end
@@ -95,7 +100,7 @@ img/@src').to_s
 
     score = { "apps" => apps_score, "gaming" => gaming_score, "mobility" => mobility_score }
 
-    computer_i = Notebook.new(name, cpu, ram, storage, screen, integrated_gpu, discrete_gpu, price, details_url, score, image_url)
+    computer_i = Notebook.new(name, cpu, ram, storage, screen, integrated_gpu, discrete_gpu, price, details_url, score, image_url, weight)
     computers_arr << computer_i
 
   end
@@ -126,7 +131,8 @@ computers.each do |computer|
     apps_score: computer.score['apps'],
     gaming_score: computer.score['gaming'],
     movility_score: computer.score['mobility'],
-    image_url: computer.image_url
+    image_url: computer.image_url,
+    weight: computer.weight
   )
 
 end
