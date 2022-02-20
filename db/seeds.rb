@@ -100,7 +100,7 @@ img/@src').to_s
 
     score = { "apps" => apps_score, "gaming" => gaming_score, "mobility" => mobility_score }
 
-    computer_i = Notebook.new(name, cpu, ram, storage, screen, integrated_gpu, discrete_gpu, price, details_url, score, image_url)
+    computer_i = Notebook.new(name, cpu, ram, storage, screen, integrated_gpu, discrete_gpu, price, details_url, score, image_url, weight)
     computers_arr << computer_i
 
   end
@@ -115,7 +115,7 @@ def scrape_computer_pages(num_of_pages)
   return computers
 end
 
-computers = scrape_computer_pages(number_of_pages)
+computers = scrape_computer_pages(1)
 Computer.find_each(&:destroy)
 computers.each do |computer|
   Computer.create(
@@ -131,7 +131,8 @@ computers.each do |computer|
     apps_score: computer.score['apps'],
     gaming_score: computer.score['gaming'],
     movility_score: computer.score['mobility'],
-    image_url: computer.image_url
+    image_url: computer.image_url,
+    weight: computer.weight
   )
 
 end
