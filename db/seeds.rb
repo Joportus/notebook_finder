@@ -87,6 +87,11 @@ div.benchmark-container p.benchmark-score')[2].text.to_s.delete(' ').split('/')[
 div.image-gallery-image
 img/@src').to_s
 
+        weight = details_doc.css('//body
+  div#technical-specifications-container
+  div.col-md-6')[0].css('dl
+    dd')[0].text.tr('.', '')
+
       rescue OpenURI::HTTPError => ex
         puts "Detalle no encontrado"
       end
