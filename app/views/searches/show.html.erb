@@ -35,6 +35,11 @@
       <li class="list-group-item">Memoria RAM: <%= most_powerful_computer.ram %></li>
       <li class="list-group-item">Almacenamiento: <%= most_powerful_computer.storage %></li>
       <li class="list-group-item">Pantalla: <%= most_powerful_computer.screen %></li>
+      <% if most_powerful_computer.weight != '0 g' %>
+        <li class="list-group-item">Peso: <%= most_powerful_computer.weight %></li>
+      <% else %>
+        <li class="list-group-item">Peso: No especificado</li>
+      <% end %>
     </ul>
     <div class="card-body">
       <a href=<%= most_powerful_computer.details_url %>>
@@ -62,6 +67,11 @@
       <li class="list-group-item">Memoria RAM: <%= l.ram %></li>
       <li class="list-group-item">Almacenamiento: <%= l.storage %></li>
       <li class="list-group-item">Pantalla: <%= l.screen %></li>
+      <% if l.weight != '0 g' %>
+        <li class="list-group-item">Peso: <%= l.weight %></li>
+      <% else %>
+        <li class="list-group-item">Peso: No especificado</li>
+      <% end %>
     </ul>
     <div class="card-body">
       <a href=<%= l.details_url %>>
@@ -90,6 +100,11 @@
       <li class="list-group-item">Memoria RAM: <%= c.ram %></li>
       <li class="list-group-item">Almacenamiento: <%= c.storage %></li>
       <li class="list-group-item">Pantalla: <%= c.screen %></li>
+      <% if c.weight != '0 g' %>
+        <li class="list-group-item">Peso: <%= c.weight %></li>
+      <% else %>
+        <li class="list-group-item">Peso: No especificado</li>
+      <% end %>
     </ul>
     <div class="card-body">
       <a href=<%= c.details_url %>>
@@ -118,7 +133,11 @@
           <li class="list-group-item">Memoria RAM: <%= computer.ram %></li>
           <li class="list-group-item">Almacenamiento: <%= computer.storage %></li>
           <li class="list-group-item">Pantalla: <%= computer.screen %></li>
-          <li class="list-group-item">Puntaje mobilidad: <%= computer.movility_score %>/1000</li>
+          <% if computer.weight != '0 g' %>
+            <li class="list-group-item">Peso: <%= computer.weight %></li>
+          <% else %>
+            <li class="list-group-item">Peso: No especificado</li>
+          <% end %>
         </ul>
         <div class="card-body">
           <a href=<%= computer.details_url %>>
