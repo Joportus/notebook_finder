@@ -115,7 +115,7 @@ def scrape_computer_pages(num_of_pages)
   return computers
 end
 
-computers = scrape_computer_pages(1)
+computers = scrape_computer_pages(number_of_pages)
 Computer.find_each(&:destroy)
 computers.each do |computer|
   Computer.create(
