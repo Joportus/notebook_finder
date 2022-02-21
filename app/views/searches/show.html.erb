@@ -13,7 +13,7 @@
 <br>
 
 <% if @search.search_computers.empty? %>
-  <p>No se encontraron computadores</p>
+  <h1 class="display-6">No se encontraron computadores</h1>
 <% else %>
   <% computers = @search.search_computers.first(5) %>
   <% most_powerful_computer = computers[0] %>

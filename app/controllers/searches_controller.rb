@@ -1,7 +1,18 @@
 class SearchesController < ApplicationController
 
+  def add_dots(num_string)
+    num_string.reverse.scan(/\d{3}|.+/).join(".").reverse
+  end
+
   def new
     @search = Search.new
+    budgets = []
+    budget = 50_000
+    100.times do
+      budgets << ['$'+add_dots(budget.to_s), budget]
+      budget += 50_000
+    end
+    @budgets = budgets
   end
 
   def create
