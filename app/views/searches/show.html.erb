@@ -125,7 +125,7 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Precio: $<%= computer.price %></li>
           <li class="list-group-item">Procesador: <%= computer.cpu %></li>
-          <% if c.discrete_gpu != "None" %>
+          <% if computer.discrete_gpu != "None" %>
             <li class="list-group-item">Tarjeta gráfica: <%= computer.discrete_gpu %></li>
           <% else %>
             <li class="list-group-item">Tarjeta gráfica: <%= computer.integrated_gpu %></li>
