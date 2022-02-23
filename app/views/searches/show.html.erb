@@ -18,7 +18,7 @@
       <% most_powerful_computer = computers[0] %>
       <h1 class="display-4">Opción más poderosa:</h1>
       <br/>
-      <div class="card" style="width: 50rem;">
+      <div class="card">
         <img src=<%= most_powerful_computer.image_url %> class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title"><%= most_powerful_computer.name %></h5>
@@ -50,7 +50,7 @@
       <% l = @search.lightest_computer(computers) %>
       <h1 class="display-4">Opción más liviana:</h1>
       <br/>
-      <div class="card" style="width: 50rem;">
+      <div class="card">
         <img src=<%= l.image_url %> class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title"><%= l.name %></h5>
@@ -83,7 +83,7 @@
       <% c = @search.cheapest_computer(computers) %>
       <h1 class="display-4">Opción más barata:</h1>
       <br/>
-      <div class="card" style="width: 50rem;">
+      <div class="card">
         <img src=<%= c.image_url %> class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title"><%= c.name %></h5>
@@ -116,7 +116,7 @@
       <br/>
       <% computers.each do |computer| %>
         <% if computer != most_powerful_computer and computer != c and computer != l %>
-          <div class="card" style="width: 50rem;">
+          <div class="card">
             <img src=<%= computer.image_url %> class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title"><%= computer.name %></h5>
