@@ -1,34 +1,36 @@
 
-<br>
-<h2 class="display-5">Encuentra el computador perfecto para ti!</h2>
-<br>
-<a href=<%= computers_path %>>
-  <button type="button" class="btn btn-primary">Volver</button>
-</a>
-<br/><br/><br/>
-<%= form_for @search, html: {class: "pure-form"} do |s| %>
-  <h4 class="display-6">
-    Necesitamos saber tu presupuesto y <br> el uso que le darás a tu computador:
-  </h4>
-  <br/>
-<div class="field">
-  <h4 class="display-8">
-    Uso del computador
-  </h4>
-  <%= s.select :use_case, options_for_select([["Uso general", "apps_score"],["Gaming", "gaming_score"],["Trabajo", "apps_score"]]), :include_blank => true%>
-</div><br/>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <br>
+    <h2 class="display-5">Encuentra el computador perfecto para ti!</h2>
+    <br>
+    <a href=<%= computers_path %>>
+      <button type="button" class="btn btn-primary">Volver</button>
+    </a>
+    <br/><br/><br/>
+    <%= form_for @search, html: {class: "pure-form"} do |s| %>
+      <h4 class="display-6">
+        Necesitamos saber tu presupuesto y <br> el uso que le darás a tu computador:
+      </h4>
+      <br/>
+      <div class="field">
+        <h4 class="display-8">
+          Uso del computador
+        </h4>
+        <%= s.select :use_case, options_for_select([["Uso general", "apps_score"],["Gaming", "gaming_score"],["Trabajo", "apps_score"]]), :include_blank => true%>
+      </div><br/>
 
-<div class="field">
-  <h4 class="display-8">
-    Presupuesto máximo
-  </h4>
-  <%= s.select :budget, options_for_select(@budgets), :include_blank => true%>
-</div><br/>
+      <div class="field">
+        <h4 class="display-8">
+          Presupuesto máximo
+        </h4>
+        <%= s.select :budget, options_for_select(@budgets), :include_blank => true%>
+      </div><br/>
 
-<div class="actions"><%= s.submit "Buscar", class: "btn btn-success" %></div>
-<% end %>
-<br>
-<br>
-
-
+      <div class="actions"><%= s.submit "Buscar", class: "btn btn-success" %></div>
+    <% end %>
+    <br>
+    <br>
+  </div>
+</div>
 

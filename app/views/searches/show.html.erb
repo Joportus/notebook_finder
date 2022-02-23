@@ -12,143 +12,148 @@
 <br>
 <br>
 
-<% if @search.search_computers.empty? %>
-  <h1 class="display-6">No se encontraron computadores</h1>
-<% else %>
-  <% computers = @search.search_computers.first(5) %>
-  <% most_powerful_computer = computers[0] %>
-  <h1 class="display-4">Opción más poderosa:</h1>
-  <br/>
-  <div class="card" style="width: 50rem;">
-    <img src=<%= most_powerful_computer.image_url %> class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title"><%= most_powerful_computer.name %></h5>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Precio: $<%= most_powerful_computer.price %></li>
-      <li class="list-group-item">Procesador: <%= most_powerful_computer.cpu %></li>
-      <% if most_powerful_computer.discrete_gpu != "None" %>
-        <li class="list-group-item">Tarjeta gráfica: <%= most_powerful_computer.discrete_gpu %></li>
-      <% else %>
-        <li class="list-group-item">Tarjeta gráfica: <%= most_powerful_computer.integrated_gpu %></li>
-      <% end %>
-      <li class="list-group-item">Memoria RAM: <%= most_powerful_computer.ram %></li>
-      <li class="list-group-item">Almacenamiento: <%= most_powerful_computer.storage %></li>
-      <li class="list-group-item">Pantalla: <%= most_powerful_computer.screen %></li>
-      <% if most_powerful_computer.weight != '0 g' %>
-        <li class="list-group-item">Peso: <%= most_powerful_computer.weight %></li>
-      <% else %>
-        <li class="list-group-item">Peso: No especificado</li>
-      <% end %>
-    </ul>
-    <div class="card-body">
-      <a href=<%= most_powerful_computer.details_url %>>
-        <button type="button" class="btn btn-success">Ver donde comprar</button>
-      </a>
-    </div>
-  </div>
-  <br/><br/>
-  <% l = @search.lightest_computer(computers) %>
-  <h1 class="display-4">Opción más liviana:</h1>
-  <br/>
-  <div class="card" style="width: 50rem;">
-    <img src=<%= l.image_url %> class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title"><%= l.name %></h5>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Precio: $<%= l.price %></li>
-      <li class="list-group-item">Procesador: <%= l.cpu %></li>
-      <% if l.discrete_gpu != "None" %>
-        <li class="list-group-item">Tarjeta gráfica: <%= l.discrete_gpu %></li>
-      <% else %>
-        <li class="list-group-item">Tarjeta gráfica: <%= l.integrated_gpu %></li>
-      <% end %>
-      <li class="list-group-item">Memoria RAM: <%= l.ram %></li>
-      <li class="list-group-item">Almacenamiento: <%= l.storage %></li>
-      <li class="list-group-item">Pantalla: <%= l.screen %></li>
-      <% if l.weight != '0 g' %>
-        <li class="list-group-item">Peso: <%= l.weight %></li>
-      <% else %>
-        <li class="list-group-item">Peso: No especificado</li>
-      <% end %>
-    </ul>
-    <div class="card-body">
-      <a href=<%= l.details_url %>>
-        <button type="button" class="btn btn-success">Ver donde comprar</button>
-      </a>
-    </div>
-  </div>
-  <br/><br/>
-
-  <% c = @search.cheapest_computer(computers) %>
-  <h1 class="display-4">Opción más barata:</h1>
-  <br/>
-  <div class="card" style="width: 50rem;">
-    <img src=<%= c.image_url %> class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title"><%= c.name %></h5>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Precio: $<%= c.price %></li>
-      <li class="list-group-item">Procesador: <%= c.cpu %></li>
-      <% if c.discrete_gpu != "None" %>
-        <li class="list-group-item">Tarjeta gráfica: <%= c.discrete_gpu %></li>
-      <% else %>
-        <li class="list-group-item">Tarjeta gráfica: <%= c.integrated_gpu %></li>
-      <% end %>
-      <li class="list-group-item">Memoria RAM: <%= c.ram %></li>
-      <li class="list-group-item">Almacenamiento: <%= c.storage %></li>
-      <li class="list-group-item">Pantalla: <%= c.screen %></li>
-      <% if c.weight != '0 g' %>
-        <li class="list-group-item">Peso: <%= c.weight %></li>
-      <% else %>
-        <li class="list-group-item">Peso: No especificado</li>
-      <% end %>
-    </ul>
-    <div class="card-body">
-      <a href=<%= c.details_url %>>
-        <button type="button" class="btn btn-success">Ver donde comprar</button>
-      </a>
-    </div>
-  </div>
-  <br/><br/>
-  <h1 class="display-4">Otras opciones:</h1>
-  <br/>
-  <% computers.each do |computer| %>
-    <% if computer != most_powerful_computer and computer != c and computer != l %>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <% if @search.search_computers.empty? %>
+      <h1 class="display-6">No se encontraron computadores</h1>
+    <% else %>
+      <% computers = @search.search_computers.first(5) %>
+      <% most_powerful_computer = computers[0] %>
+      <h1 class="display-4">Opción más poderosa:</h1>
+      <br/>
       <div class="card" style="width: 50rem;">
-        <img src=<%= computer.image_url %> class="card-img-top" alt="...">
+        <img src=<%= most_powerful_computer.image_url %> class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title"><%= computer.name %></h5>
+          <h5 class="card-title"><%= most_powerful_computer.name %></h5>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Precio: $<%= computer.price %></li>
-          <li class="list-group-item">Procesador: <%= computer.cpu %></li>
-          <% if computer.discrete_gpu != "None" %>
-            <li class="list-group-item">Tarjeta gráfica: <%= computer.discrete_gpu %></li>
+          <li class="list-group-item">Precio: $<%= most_powerful_computer.price %></li>
+          <li class="list-group-item">Procesador: <%= most_powerful_computer.cpu %></li>
+          <% if most_powerful_computer.discrete_gpu != "None" %>
+            <li class="list-group-item">Tarjeta gráfica: <%= most_powerful_computer.discrete_gpu %></li>
           <% else %>
-            <li class="list-group-item">Tarjeta gráfica: <%= computer.integrated_gpu %></li>
+            <li class="list-group-item">Tarjeta gráfica: <%= most_powerful_computer.integrated_gpu %></li>
           <% end %>
-          <li class="list-group-item">Memoria RAM: <%= computer.ram %></li>
-          <li class="list-group-item">Almacenamiento: <%= computer.storage %></li>
-          <li class="list-group-item">Pantalla: <%= computer.screen %></li>
-          <% if computer.weight != '0 g' %>
-            <li class="list-group-item">Peso: <%= computer.weight %></li>
+          <li class="list-group-item">Memoria RAM: <%= most_powerful_computer.ram %></li>
+          <li class="list-group-item">Almacenamiento: <%= most_powerful_computer.storage %></li>
+          <li class="list-group-item">Pantalla: <%= most_powerful_computer.screen %></li>
+          <% if most_powerful_computer.weight != '0 g' %>
+            <li class="list-group-item">Peso: <%= most_powerful_computer.weight %></li>
           <% else %>
             <li class="list-group-item">Peso: No especificado</li>
           <% end %>
         </ul>
         <div class="card-body">
-          <a href=<%= computer.details_url %>>
+          <a href=<%= most_powerful_computer.details_url %>>
             <button type="button" class="btn btn-success">Ver donde comprar</button>
           </a>
         </div>
       </div>
       <br/><br/>
-    <% end %>
+      <% l = @search.lightest_computer(computers) %>
+      <h1 class="display-4">Opción más liviana:</h1>
+      <br/>
+      <div class="card" style="width: 50rem;">
+        <img src=<%= l.image_url %> class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= l.name %></h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Precio: $<%= l.price %></li>
+          <li class="list-group-item">Procesador: <%= l.cpu %></li>
+          <% if l.discrete_gpu != "None" %>
+            <li class="list-group-item">Tarjeta gráfica: <%= l.discrete_gpu %></li>
+          <% else %>
+            <li class="list-group-item">Tarjeta gráfica: <%= l.integrated_gpu %></li>
+          <% end %>
+          <li class="list-group-item">Memoria RAM: <%= l.ram %></li>
+          <li class="list-group-item">Almacenamiento: <%= l.storage %></li>
+          <li class="list-group-item">Pantalla: <%= l.screen %></li>
+          <% if l.weight != '0 g' %>
+            <li class="list-group-item">Peso: <%= l.weight %></li>
+          <% else %>
+            <li class="list-group-item">Peso: No especificado</li>
+          <% end %>
+        </ul>
+        <div class="card-body">
+          <a href=<%= l.details_url %>>
+            <button type="button" class="btn btn-success">Ver donde comprar</button>
+          </a>
+        </div>
+      </div>
+      <br/><br/>
 
-  <% end %>
-<% end %>
+      <% c = @search.cheapest_computer(computers) %>
+      <h1 class="display-4">Opción más barata:</h1>
+      <br/>
+      <div class="card" style="width: 50rem;">
+        <img src=<%= c.image_url %> class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= c.name %></h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Precio: $<%= c.price %></li>
+          <li class="list-group-item">Procesador: <%= c.cpu %></li>
+          <% if c.discrete_gpu != "None" %>
+            <li class="list-group-item">Tarjeta gráfica: <%= c.discrete_gpu %></li>
+          <% else %>
+            <li class="list-group-item">Tarjeta gráfica: <%= c.integrated_gpu %></li>
+          <% end %>
+          <li class="list-group-item">Memoria RAM: <%= c.ram %></li>
+          <li class="list-group-item">Almacenamiento: <%= c.storage %></li>
+          <li class="list-group-item">Pantalla: <%= c.screen %></li>
+          <% if c.weight != '0 g' %>
+            <li class="list-group-item">Peso: <%= c.weight %></li>
+          <% else %>
+            <li class="list-group-item">Peso: No especificado</li>
+          <% end %>
+        </ul>
+        <div class="card-body">
+          <a href=<%= c.details_url %>>
+            <button type="button" class="btn btn-success">Ver donde comprar</button>
+          </a>
+        </div>
+      </div>
+      <br/><br/>
+      <h1 class="display-4">Otras opciones:</h1>
+      <br/>
+      <% computers.each do |computer| %>
+        <% if computer != most_powerful_computer and computer != c and computer != l %>
+          <div class="card" style="width: 50rem;">
+            <img src=<%= computer.image_url %> class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= computer.name %></h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Precio: $<%= computer.price %></li>
+              <li class="list-group-item">Procesador: <%= computer.cpu %></li>
+              <% if computer.discrete_gpu != "None" %>
+                <li class="list-group-item">Tarjeta gráfica: <%= computer.discrete_gpu %></li>
+              <% else %>
+                <li class="list-group-item">Tarjeta gráfica: <%= computer.integrated_gpu %></li>
+              <% end %>
+              <li class="list-group-item">Memoria RAM: <%= computer.ram %></li>
+              <li class="list-group-item">Almacenamiento: <%= computer.storage %></li>
+              <li class="list-group-item">Pantalla: <%= computer.screen %></li>
+              <% if computer.weight != '0 g' %>
+                <li class="list-group-item">Peso: <%= computer.weight %></li>
+              <% else %>
+                <li class="list-group-item">Peso: No especificado</li>
+              <% end %>
+            </ul>
+            <div class="card-body">
+              <a href=<%= computer.details_url %>>
+                <button type="button" class="btn btn-success">Ver donde comprar</button>
+              </a>
+            </div>
+          </div>
+          <br/><br/>
+        <% end %>
+
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
 
 
