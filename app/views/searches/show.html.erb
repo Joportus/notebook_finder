@@ -1,18 +1,15 @@
-<br>
-
-<h1 class="display-4">Estos son los 5 mejores computadores que encontramos:</h1>
-<br/>
-<h2>
-  <a href=<%= new_search_path %>>
-    <button type="button" class="btn btn-primary">Volver</button>
-  </a>
-</h2>
-
-
-<br>
-<br>
 
 <div class="row">
+  <br>
+  <h1 class="display-4">Estos son los 5 mejores computadores que encontramos:</h1>
+  <br/>
+  <h2>
+    <a href=<%= new_search_path %>>
+      <button type="button" class="btn btn-primary">Volver</button>
+    </a>
+  </h2>
+  <br>
+  <br>
   <div class="col-md-8 offset-md-2">
     <% if @search.search_computers.empty? %>
       <h1 class="display-6">No se encontraron computadores</h1>
