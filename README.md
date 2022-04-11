@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a website that helps you find a notebook.
+It uses data scraped from solotodo website to show you computers
+based on budget and usage. You just need to choose a budget and usage,
+and it will give you the best options to buy!
 
-Things you may want to cover:
+give it a try, its currently working! 
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+https://notebook-finder.herokuapp.com/
