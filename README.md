@@ -7,4 +7,4 @@ and it will give you the best options to buy!
 
 give it a try, its currently working! 
 
-https://notebook-finder.herokuapp.com/
+tucomputador.cl
